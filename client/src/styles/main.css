@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f9f9f9;
+  color: #333;
+}
+
+input, textarea, select, button {
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 5px 0;
+}

@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - '5000:5000'
+    depends_on:
+      - customer-service
+      - product-catalog-service
+      - order-service
+      - agreement-service
+      - privacy-service
+      - audit-service
+    environment:
+      - NODE_ENV=development
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGO_URI=${MONGO_URI}
+
+  customer-service:
+    build: ./customer-service
+    ports:
+      - '5001:5001'
+    environment:
+      - PORT=5001
+      - MONGO_URI=${CUSTOMER_MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
+
+  product-catalog-service:
+    build: ./product-catalog-service
+    ports:
+      - '5002:5002'
+    environment:
+      - PORT=5002
+      - MONGO_URI=${PRODUCT_MONGO_URI}
+
+  order-service:
+    build: ./order-service
+    ports:
+      - '5003:5003'
+    environment:
+      - PORT=5003
+      - MONGO_URI=${ORDER_MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
+
+  agreement-service:
+    build: ./agreement-service
+    ports:
+      - '5004:5004'
+    environment:
+      - PORT=5004
+      - MONGO_URI=${AGREEMENT_MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
+
+  privacy-service:
+    build: ./privacy-service
+    ports:
+      - '5005:5005'
+    environment:
+      - PORT=5005
+      - MONGO_URI=${PRIVACY_MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
+
+  audit-service:
+    build: ./audit-service
+    ports:
+      - '5006:5006'
+    environment:
+      - PORT=5006
+      - MONGO_URI=${AUDIT_MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
